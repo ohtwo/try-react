@@ -3,7 +3,6 @@ import { useState } from "react";
 import CourseGoal from "./components/CourseGoal.tsx";
 import Header from "./components/Header.tsx";
 import reactImg from "./assets/react.svg";
-import "./App.css";
 
 type CourseGoal = {
   id: number;
@@ -14,7 +13,16 @@ type CourseGoal = {
 function App() {
   const [goals, setGoals] = useState<CourseGoal[]>([]);
 
-  function handleAddGoal() {}
+  function handleAddGoal() {
+    setGoals((prevGoals) => {
+      const newGoal = {
+        id: Date.now(),
+        title: "Learn React + TS",
+        description: "Learn it in depth!",
+      };
+      return [...prevGoals, newGoal];
+    });
+  }
 
   return (
     <main>
@@ -22,9 +30,15 @@ function App() {
         <h1>Your Course Goals</h1>
       </Header>
       <button onClick={handleAddGoal}>Add Goal</button>
-      <CourseGoal title="Learn React + TS">
-        <p>Learn it from scratch</p>
-      </CourseGoal>
+      <ul>
+        {goals.map((goal) => (
+          <li key={goal.id}>
+            <CourseGoal title={goal.title}>
+              <p>{goal.description}</p>
+            </CourseGoal>
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }
