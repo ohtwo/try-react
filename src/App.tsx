@@ -4,11 +4,9 @@ import "./App.css";
 function App() {
   return (
     <main>
-      <CourseGoal
-        title="Learn React + TS"
-        description="Learn it from the ground up"
-        id={1}
-      />
+      <CourseGoal title="Learn React + TS">
+        <p>Learn it from scratch</p>
+      </CourseGoal>
     </main>
   );
 }
