@@ -1,13 +1,11 @@
 import Button from "./components/Button";
+import Container from "./components/Container.tsx";
 
 function App() {
   return (
     <main>
       <p>
-        <Button>A Button</Button>
-      </p>
-      <p>
-        <Button href="http://google.com">A Link</Button>
+        <Container as={Button} />
       </p>
     </main>
   );
