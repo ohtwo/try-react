@@ -8,11 +8,16 @@ function App() {
   const customForm = useRef<FormHandle>(null);
 
   function handleSave(data: unknown) {
-    const extracted = data as {
-      name: string;
-      age: string;
-    };
-    console.log(extracted);
+    if (
+      !data ||
+      typeof data !== "object" ||
+      !("name" in data) ||
+      !("age" in data)
+    ) {
+      return;
+    }
+
+    console.log(data);
     customForm.current?.clear();
   }
 
