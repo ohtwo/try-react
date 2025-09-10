@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Container from "./UI/Container.tsx";
 import {
   type Timer as TimerProps,
-  useTimersContext,
+  useTimersContext
 } from "../store/timers-context.tsx";
 
 export default function Timer({ name, duration }: TimerProps) {
@@ -20,7 +20,12 @@ export default function Timer({ name, duration }: TimerProps) {
 
     if (isRunning) {
       timer = setInterval(() => {
-        setRemainingTime((prevTime) => prevTime - 50);
+        setRemainingTime((prevTime) => {
+          if (prevTime <= 0) {
+            return prevTime;
+          }
+          return prevTime - 50;
+        });
       }, 50);
       interval.current = timer;
     } else if (interval.current) {
