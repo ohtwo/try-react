@@ -1,4 +1,4 @@
-import { useCartDispatch } from "../store/hooks.ts";
+import { useAppDispatch } from "../store/hooks.ts";
 import { addToCart } from "../store/cart-slice.ts";
 
 type ProductProps = {
