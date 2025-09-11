@@ -16,7 +16,7 @@ export default function Product({
   price,
   description,
 }: ProductProps) {
-  const dispatch = useCartDispatch();
+  const dispatch = useAppDispatch();
 
   function handleAddToCart() {
     dispatch(addToCart({ id, title, price }));
